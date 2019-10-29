@@ -16,12 +16,12 @@
     </string>
     <string name="introduce4">
         优点:
-        1.代码在业务逻辑上分层明显，分离代码的DTO，Provider，view层。代码耦合度低，有利新功能的拓展。
+        1.代码在业务逻辑上分层明显，分离代码的DTO，Provider，view层。
         2.使用了大量的异常处理机制，代码健壮性良好。
     </string>
     <string name="introduce5">
-        缺点:
-        1.UI设计不够美观，缺乏设计感。
+        作者：
+        朱安邦 41611033 计科一班
     </string>
     <string name="undershown">输入文字(自动检测)</string>
     <string name="tipss">目标语言:</string>
