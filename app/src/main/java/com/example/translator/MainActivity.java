@@ -4,7 +4,13 @@ import android.Manifest;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,15 +18,6 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -37,7 +34,6 @@ import MyFragment.IntroduceFragment;
 import dto.TranslatePostDTO;
 import dto.TranslateResultDTO;
 import provider.TranslateProvider;
-
 
 public class MainActivity extends FragmentActivity {
 
@@ -59,7 +55,6 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
         CREATE_PATH = getApplicationContext().getFilesDir().getAbsolutePath() + "/data.txt";
-
         //初始化控件
         initViews();
         // 初始化导航
@@ -80,19 +75,20 @@ public class MainActivity extends FragmentActivity {
     }
 
     //初始化PageAdapter
-    //避免不可见页面被销毁
     private void initAdapter() {
         //将四个Fragment加入集合中
         mFragments = new ArrayList<>();
         mFragments.add(new IndexFragment());
         mFragments.add(new HistoryFragment());
         mFragments.add(new IntroduceFragment());
+
         //初始化适配器
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
                 return mFragments.get(i);
             }
+
             @Override
             public int getCount() {
                 return mFragments.size();
@@ -103,14 +99,18 @@ public class MainActivity extends FragmentActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i1) {
+
             }
+
             @Override
             public void onPageSelected(int i) {
                 //设置position对应的集合中的Fragment
                 mbuttomNavView.getMenu().getItem(i).setChecked(true);
             }
+
             @Override
             public void onPageScrollStateChanged(int i) {
+
             }
         });
     }
@@ -135,12 +135,11 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
-
-
     }
 
     // 翻译界面点击按钮
     public void onclick(View v) {
+
         mTextMessage = (TextView) findViewById(R.id.message);
         TranslatePostDTO translatePostDTO = new TranslatePostDTO();
         String inputString = "";
@@ -231,7 +230,6 @@ public class MainActivity extends FragmentActivity {
             }
         });
         thread.start();
-
     }
 
     public static void bufferSave(String filename, String msg) {
