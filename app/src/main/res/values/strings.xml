@@ -3,7 +3,7 @@
     <string name="title_home">翻译</string>
     <string name="title_dashboard">历史记录</string>
     <string name="title_notifications">简介</string>
-    <string name="introduce1">欢迎您使用谷鸽翻译</string>
+    <string name="introduce1">欢迎您使用</string>
     <string name="introduce2">
         功能:
         1.调用百度翻译API，实现了六种语言(中文，文言文，英语，日语，法语，德语)的翻译功能。
